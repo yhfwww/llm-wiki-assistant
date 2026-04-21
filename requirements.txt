@@ -1,0 +1,8 @@
+agno
+lancedb
+openai
+python-dotenv
+qmd
+ag-ui-protocol
+uvicorn
+fastapi
