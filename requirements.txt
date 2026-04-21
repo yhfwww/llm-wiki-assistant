@@ -1,0 +1,5 @@
+agno
+lancedb
+openai
+python-dotenv
+qmd
