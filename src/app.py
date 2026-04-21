@@ -71,4 +71,5 @@ if __name__ == "__main__":
     # 启动服务
     print("启动 LLM Wiki Assistant 服务...")
     print("访问前端界面请查看 README.md 文档")
-    agent_os.serve(app="app:app", host="0.0.0.0", port=7777, reload=True)
+    # 直接运行，不使用 reload 模式
+    agent_os.serve(app=app, host="0.0.0.0", port=7777, reload=False)
