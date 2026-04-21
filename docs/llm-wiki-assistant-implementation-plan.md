@@ -234,12 +234,14 @@ class KnowledgeManager:
     def __init__(self):
         """初始化知识管理器"""
         self.lance_db_path = os.getenv("LANCE_DB_PATH", "tmp/lancedb")
+        # 使用环境变量中的嵌入模型
+        embedding_model = os.getenv("EMBEDDING_MODEL", "Qwen/Qwen3-Embedding-4B")
         self.knowledge = Knowledge(
             vector_db=LanceDb(
                 uri=self.lance_db_path,
                 table_name="wiki_knowledge",
                 search_type=SearchType.hybrid,
-                embedder=OpenAIEmbedder(id="text-embedding-3-small"),
+                embedder=OpenAIEmbedder(id=embedding_model),
             ),
         )
     
@@ -591,9 +593,13 @@ class WikiAgent:
         self.knowledge_manager = KnowledgeManager()
         self.wiki_manager = WikiManager()
         
+        # 使用环境变量中的LLM模型
+        llm_model = os.getenv("LLM_MODEL_ID", "Qwen/Qwen3.5-4B")
+        openai_base_url = os.getenv("OPENAI_BASE_URL", "https://api.siliconflow.cn/v1")
+        
         self.agent = Agent(
             name="Wiki Agent",
-            model=OpenAIChat(id="gpt-5-mini"),
+            model=OpenAIChat(id=llm_model, base_url=openai_base_url),
             description="你是一个知识库管理助手，负责维护和管理 Wiki 知识库。",
             instructions=[
                 "始终基于 Wiki 内容回答问题",

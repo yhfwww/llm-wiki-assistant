@@ -172,7 +172,11 @@ llm-wiki-assistant/
 ### 6.2 配置与环境
 
 - **环境变量**：
-  - OPENAI_API_KEY：OpenAI API 密钥
+  - OPENAI_API_KEY：OpenAI API 密钥 (已配置)
+  - OPENAI_BASE_URL：API 基础 URL (https://api.siliconflow.cn/v1)
+  - EMBEDDING_MODEL：嵌入模型 (Qwen/Qwen3-Embedding-4B)
+  - LLM_MODEL_ID：LLM 模型 ID (Qwen/Qwen3.5-4B)
+  - RERANKER_MODEL：重排序模型 (BAAI/bge-reranker-v2-m3)
   - LANCE_DB_PATH：LanceDB 存储路径
   - WIKI_PATH：Wiki 存储路径
   - RAW_PATH：原始源文件路径
